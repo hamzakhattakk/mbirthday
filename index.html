@@ -9,12 +9,8 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --amber: #c84878;
-    --amber-light: #c84878;
-    --rust: #8B2252;
-    --cream: #3a1a2a;
-    --rose: #e8789a;
-    --rose-light: #a03060;
+    --pink:      #c84878;
+    --pink-dark: #8B2252;
     --dur: 0.9s;
   }
 
@@ -28,6 +24,7 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* subtle grain */
   body::after {
     content: '';
     position: fixed; inset: 0;
@@ -35,66 +32,62 @@
     pointer-events: none; z-index: 2000; opacity: 0.35;
   }
 
+  /* ── REEL ── */
   #reel { position: fixed; inset: 0; overflow: hidden; }
 
   .slide {
     position: absolute; left: 0; right: 0; height: 100%;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    padding: clamp(1.2rem, 5vw, 2.5rem);
-    overflow: hidden;
-    will-change: transform;
+    padding: clamp(1.2rem,5vw,2.5rem);
+    overflow: hidden; will-change: transform;
     transition: transform var(--dur) cubic-bezier(0.4,0,0.1,1);
   }
 
-  .slide-1  { background: linear-gradient(150deg,#FFF0F3 0%,#FFE4EC 40%,#FDD8E8 100%); color: #3a1a2a; }
-  .slide-2  { background: #FFF0F5; color: #3a1a2a; }
-  .slide-3  { background: #FDE8F0; color: #3a1a2a; }
-  .slide-4  { background: #FCE0EA; color: #3a1a2a; }
-  .slide-5  { background: #FBD8E5; color: #3a1a2a; }
-  .slide-6  { background: #FAD0E0; color: #3a1a2a; }
-  .slide-7  { background: #F9C8DA; color: #3a1a2a; }
-  .slide-final { background: #ffffff; color: #1a1a1a; }
+  /* slide backgrounds — graduating pinkish-white */
+  .slide-1     { background: linear-gradient(150deg,#FFF0F3 0%,#FFE4EC 40%,#FDD8E8 100%); }
+  .slide-2     { background: #FFF0F5; }
+  .slide-3     { background: #FDE8F0; }
+  .slide-4     { background: #FCE0EA; }
+  .slide-5     { background: #FBD8E5; }
+  .slide-6     { background: #FAD0E0; }
+  .slide-7     { background: #F9C8DA; }
+  .slide-final { background: #ffffff; }
 
-  .deco {
-    position: absolute; border-radius: 50%;
-    pointer-events: none; z-index: 0;
-    filter: blur(60px); opacity: 0.22;
-  }
-
+  /* ── TYPOGRAPHY ── */
   .overline {
     font-size: clamp(10px,2.5vw,13px); font-weight: 500;
     letter-spacing: 0.25em; text-transform: uppercase;
-    opacity: 0.55; margin-bottom: 0.8rem;
+    opacity: 0.55; margin-bottom: 0.8rem; color: #3a1a2a;
   }
   .headline {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.6rem,10vw,6.5rem);
     font-weight: 700; line-height: 1.0;
-    color: var(--amber-light); text-align: center;
+    color: var(--pink); text-align: center;
   }
-  .headline em { font-style: italic; color: var(--rose-light); }
+  .headline em { font-style: italic; color: var(--pink-dark); }
   .subhead {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.1rem,3.5vw,1.8rem);
-    font-style: italic; color: var(--rose-light);
+    font-style: italic; color: var(--pink-dark);
     text-align: center; margin-top: 0.6rem;
   }
   .body-text {
     font-size: clamp(0.9rem,2.3vw,1.1rem);
     line-height: 1.75; opacity: 0.82;
-    text-align: center; max-width: 500px;
+    text-align: center; max-width: 500px; color: #3a1a2a;
   }
   .stat-label {
     font-size: clamp(0.75rem,1.8vw,0.95rem);
     letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0.5; margin-top: 0.4rem; text-align: center;
+    opacity: 0.5; margin-top: 0.4rem; text-align: center; color: #8B2252;
   }
   .name-pill {
     display: inline-block;
-    background: rgba(232,160,69,0.18); border: 1px solid rgba(232,160,69,0.4);
+    background: rgba(200,72,120,0.12); border: 1px solid rgba(200,72,120,0.35);
     border-radius: 100px; padding: 0.3rem 1.1rem;
-    font-size: clamp(0.75rem,2vw,0.9rem); color: var(--amber-light);
+    font-size: clamp(0.75rem,2vw,0.9rem); color: var(--pink);
     letter-spacing: 0.1em; margin-bottom: 1.2rem;
   }
   .content-stack {
@@ -104,7 +97,7 @@
     max-width: 680px; width: 100%;
   }
 
-  /* side dots */
+  /* ── SIDE DOTS ── */
   #dots {
     position: fixed; right: 1rem; top: 50%;
     transform: translateY(-50%);
@@ -112,12 +105,12 @@
   }
   .dot {
     width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(180,60,100,0.25);
-    transition: all 0.3s; cursor: pointer;
+    background: rgba(180,60,100,0.25); transition: all 0.3s; cursor: pointer;
   }
-  .dot.active { height: 22px; border-radius: 3px; background: #c84878; }
+  .dot.active { height: 22px; border-radius: 3px; background: var(--pink); }
+  @media (max-width:600px){ #dots { display:none; } }
 
-  /* desktop arrows */
+  /* ── DESKTOP ARROWS ── */
   .nav-btn {
     position: fixed; left: 50%; transform: translateX(-50%);
     background: rgba(200,72,120,0.08); border: 1px solid rgba(200,72,120,0.25);
@@ -126,24 +119,24 @@
     cursor: pointer; z-index: 1999; transition: all 0.2s;
     backdrop-filter: blur(8px); font-size: 17px;
   }
-  .nav-btn:hover { background: rgba(200,72,120,0.15); color: #c84878; }
+  .nav-btn:hover { background: rgba(200,72,120,0.15); color: var(--pink); }
   #btn-prev { top: 1rem; }
   #btn-next { bottom: 1rem; }
-  @media (max-width:600px){ .nav-btn { display:none; } #dots { display:none; } }
+  @media (max-width:600px){ .nav-btn { display:none; } }
 
+  /* ── SWIPE HINT ── */
   #swipe-hint {
     position: fixed; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
     font-size: 11px; opacity: 0.32; letter-spacing: 0.12em; color: #8B2252;
-    z-index: 1999; pointer-events: none; text-transform: uppercase;
-    display: none;
+    z-index: 1999; pointer-events: none; text-transform: uppercase; display: none;
   }
   @media (max-width:600px){ #swipe-hint { display: block; } }
 
-  /* ── DISC PLAYER (top-left, all slides except song slide) ── */
+  /* ── DISC PLAYER (top-left) ── */
   #disc-player {
     position: fixed; top: 1.1rem; left: 1.1rem;
     display: flex; align-items: center; gap: 10px;
-    z-index: 1999; pointer-events: all;
+    z-index: 1999;
   }
   #disc-wrap {
     position: relative; width: 48px; height: 48px; cursor: pointer; flex-shrink: 0;
@@ -151,8 +144,8 @@
   #disc {
     width: 48px; height: 48px; border-radius: 50%;
     background: conic-gradient(
-      #c84878 0deg, #e8789a 60deg, #f0a8c0 120deg,
-      #fdd8e8 180deg, #c84878 240deg, #e8789a 300deg, #c84878 360deg
+      #c84878 0deg,#e8789a 60deg,#f0a8c0 120deg,
+      #fdd8e8 180deg,#c84878 240deg,#e8789a 300deg,#c84878 360deg
     );
     box-shadow: 0 2px 12px rgba(200,72,120,0.3);
     animation: disc-spin 3s linear infinite;
@@ -160,27 +153,16 @@
   }
   #disc.spinning { animation-play-state: running; }
   #disc::after {
-    content: '';
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 14px; height: 14px; border-radius: 50%;
-    background: white;
-    box-shadow: 0 0 0 2px rgba(200,72,120,0.25);
-  }
-  /* album art on disc when set */
-  #disc-img {
-    position: absolute; inset: 0; border-radius: 50%;
-    object-fit: cover; width: 100%; height: 100%;
-    display: none;
-  }
-  #disc-img.visible { display: block; }
-  #disc-img::after {
     content: ''; position: absolute; top: 50%; left: 50%;
     transform: translate(-50%,-50%);
     width: 14px; height: 14px; border-radius: 50%;
-    background: white;
+    background: white; box-shadow: 0 0 0 2px rgba(200,72,120,0.25);
   }
-  /* centre hole overlay on top of album art */
+  #disc-img {
+    position: absolute; inset: 0; border-radius: 50%;
+    object-fit: cover; width: 100%; height: 100%; display: none;
+  }
+  #disc-img.visible { display: block; }
   #disc-hole {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%,-50%);
@@ -190,67 +172,29 @@
     pointer-events: none;
   }
   @keyframes disc-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
-  #disc-info {
-    display: flex; flex-direction: column; gap: 1px;
-    max-width: 140px; overflow: hidden;
-  }
-  #disc-title {
-    font-size: 11px; font-weight: 500; color: #8B2252;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  #disc-artist {
-    font-size: 10px; color: #c84878; opacity: 0.7;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  #disc-toggle {
-    background: none; border: none; color: #c84878;
-    font-size: 13px; cursor: pointer; padding: 0; line-height: 1;
-    flex-shrink: 0;
-  }
-
-  /* hide disc on song slide (index 5) — handled by JS class */
+  #disc-info { display: flex; flex-direction: column; gap: 1px; max-width: 140px; overflow: hidden; }
+  #disc-title { font-size: 11px; font-weight: 500; color: #8B2252; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #disc-artist { font-size: 10px; color: #c84878; opacity: 0.7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #disc-toggle { background: none; border: none; color: #c84878; font-size: 13px; cursor: pointer; padding: 0; line-height: 1; flex-shrink: 0; }
   #disc-player.on-song-slide #disc-info,
   #disc-player.on-song-slide #disc-toggle { display: none; }
 
-  
- /* ── MEMORY TABS ───────────────────────────────────────────────*/
-/*╔════════════════════════════════════════════════════════╗
-// ║  Edit the text for each memory in the array below.    ║
-// ║  These match tab 1, 2, 3 in order.                    ║
-// ╚════════════════════════════════════════════════════════╝*/
-const MEM_TEXTS = [
-  // ★ MEMORY 1 TEXT — edit here ★
-  `Write your memory about the exam sessions here. What happened, how it felt, the funny moments — all of it.`,
-  // ★ MEMORY 2 TEXT — edit here ★
-  `Write your second memory here. A moment you'll never forget.`,
-  // ★ MEMORY 3 TEXT — edit here ★
-  `Write your third memory here. Something that always makes you smile.`,
-];
- 
-let activeMemTab = -1;
-function openMemTab(idx){
-  const tabs  = document.querySelectorAll('.mem-tab');
-  const panel = document.getElementById('mem-panel');
-  const pText = document.getElementById('mem-panel-text');
- 
-  if(activeMemTab === idx){
-    // clicking the active tab closes it
-    tabs[idx].classList.remove('active');
-    panel.classList.remove('open');
-    activeMemTab = -1;
-    return;
+  /* ── CHILD ANIMATIONS ── */
+  .anim-child { opacity: 0; }
+  .slide.in-view .anim-child { animation: rise 0.55s ease forwards; }
+  .slide.in-view .anim-child:nth-child(1){animation-delay:0.08s}
+  .slide.in-view .anim-child:nth-child(2){animation-delay:0.18s}
+  .slide.in-view .anim-child:nth-child(3){animation-delay:0.28s}
+  .slide.in-view .anim-child:nth-child(4){animation-delay:0.38s}
+  .slide.in-view .anim-child:nth-child(5){animation-delay:0.48s}
+  .slide.in-view .anim-child:nth-child(6){animation-delay:0.56s}
+  @keyframes rise {
+    from{opacity:0;transform:translateY(20px)}
+    to  {opacity:1;transform:translateY(0)}
   }
- 
-  // switch tab
-  tabs.forEach(t=>t.classList.remove('active'));
-  tabs[idx].classList.add('active');
-  pText.textContent = MEM_TEXTS[idx];
-  panel.classList.add('open');
-  activeMemTab = idx;
-}
-  /* COUNTDOWN */
-   .countdown-grid {
+
+  /* ── COUNTDOWN / ELAPSED ── */
+  .countdown-grid {
     display: grid; grid-template-columns: repeat(4,1fr);
     gap: clamp(8px,2vw,14px); max-width: 460px; width: 100%; margin-top: 0.4rem;
   }
@@ -262,7 +206,7 @@ function openMemTab(idx){
   .cd-num {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem,6.5vw,3.2rem);
-    font-weight: 700; color: #c84878; line-height: 1;
+    font-weight: 700; color: var(--pink); line-height: 1;
     font-variant-numeric: tabular-nums; min-width: 2ch; text-align: center;
   }
   .cd-label {
@@ -270,18 +214,84 @@ function openMemTab(idx){
     letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; color: #8B2252;
   }
 
-  /* ALBUM COVER */
+  /* ── TRAITS ── */
+  .trait-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 0.6rem; max-width: 500px; }
+  .trait {
+    background: rgba(200,72,120,0.08); border: 1px solid rgba(200,72,120,0.22);
+    border-radius: 100px; padding: 0.4rem 1rem;
+    font-size: clamp(0.72rem,1.9vw,0.88rem); color: #8B2252; transition: all 0.2s;
+  }
+  .trait:hover { background: rgba(200,72,120,0.16); border-color: rgba(200,72,120,0.45); color: var(--pink); }
+
+  /* ── MEMORY TABS (horizontal) ── */
+  .mem-tabs-wrap {
+    width: 100%; max-width: 500px;
+  }
+  /* the 3 tab buttons sit in a row */
+  .mem-tabs {
+    display: flex; gap: 8px; width: 100%;
+  }
+  .mem-tab {
+    flex: 1;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(200,72,120,0.18);
+    border-radius: 14px 14px 0 0;
+    padding: 0.75rem 0.5rem 0.65rem;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    transition: background 0.25s, border-color 0.25s;
+    border-bottom: 2px solid transparent;
+  }
+  .mem-tab:hover { background: rgba(255,255,255,0.75); }
+  .mem-tab.active {
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(200,72,120,0.35);
+    border-bottom-color: rgba(255,255,255,0.9);
+  }
+  .mem-tab-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.7rem,2vw,0.85rem);
+    font-weight: 700; color: rgba(200,72,120,0.35); line-height: 1;
+  }
+  .mem-tab.active .mem-tab-num { color: rgba(200,72,120,0.55); }
+  .mem-tab-label {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.65rem,1.8vw,0.78rem);
+    font-weight: 700; color: #8B2252;
+    text-align: center; line-height: 1.3;
+    display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .mem-tab.active .mem-tab-label { color: var(--pink); }
+  /* the expanded content panel below the tabs */
+  .mem-panel {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(200,72,120,0.25);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
+    padding: 0 1.3rem;
+  }
+  .mem-panel.open { max-height: 300px; padding: 1.1rem 1.3rem; }
+  .mem-panel p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(0.82rem,2.2vw,0.97rem);
+    color: #5a2a3a; line-height: 1.75; opacity: 0.88;
+  }
+
+  /* ── ALBUM SLOT ── */
   .album-slot {
     width: clamp(130px,36vw,210px); height: clamp(130px,36vw,210px);
-    border-radius: 14px;
-    border: 2px dashed rgba(200,72,120,0.3);
+    border-radius: 14px; border: 2px dashed rgba(200,72,120,0.3);
     background: rgba(255,255,255,0.4);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    gap: 0.45rem; font-size: 0.72rem; color: #c84878;
+    gap: 0.45rem; font-size: 0.72rem; color: var(--pink);
     position: relative; overflow: hidden; cursor: pointer;
-    transition: border-color 0.2s;
-    flex-shrink: 0;
+    transition: border-color 0.2s; flex-shrink: 0;
   }
   .album-slot:hover { border-color: rgba(200,72,120,0.55); }
   .album-slot input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
@@ -289,146 +299,90 @@ function openMemTab(idx){
   .vinyl {
     width: 58px; height: 58px; border-radius: 50%;
     border: 3px solid rgba(200,72,120,0.25);
-    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+    display: flex; align-items: center; justify-content: center;
   }
 
-  /* PHOTO SLOT */
-  .photo-slot {
-    width: clamp(150px,42vw,240px); aspect-ratio: 4/5;
-    border-radius: 16px; border: 2px dashed rgba(200,72,120,0.3);
-    background: rgba(255,255,255,0.4);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0.5rem; font-size: 0.78rem; color: #c84878;
-    position: relative; overflow: hidden;
-  }
-  .photo-slot input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-  .photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
-
-  /* TRAITS */
-  .trait-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 0.6rem; max-width: 500px; }
-  .trait {
-    background: rgba(200,72,120,0.08); border: 1px solid rgba(200,72,120,0.22);
-    border-radius: 100px; padding: 0.4rem 1rem;
-    font-size: clamp(0.72rem,1.9vw,0.88rem); color: #8B2252;
-    transition: all 0.2s;
-  }
-  .trait:hover { background: rgba(200,72,120,0.16); border-color: rgba(200,72,120,0.45); color: #c84878; }
-
-  /* WISHES */
+  /* ── WISHES ── */
   .wish-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.6rem; max-width: 440px; width: 100%; }
   .wish-list li {
     display: flex; align-items: center; gap: 0.75rem;
-    background: rgba(255,255,255,0.5); border-left: 2px solid #c84878;
+    background: rgba(255,255,255,0.5); border-left: 2px solid var(--pink);
     border-radius: 0 8px 8px 0; padding: 0.55rem 1rem;
     font-size: clamp(0.82rem,2.1vw,0.97rem); color: #3a1a2a; opacity: 0.9;
   }
-  .wish-list li .icon { font-size: 1.05rem; flex-shrink: 0; }
+  .wish-list li .icon { flex-shrink: 0; line-height: 1; }
 
-  /* FINAL SLIDE */
-  .slide-final .overline { color: #c84878; opacity: 0.7; }
-  .slide-final .headline { color: #c84878; }
-  .slide-final .headline em { color: #8B2252; }
-  .slide-final .subhead { color: #8B2252; }
+  /* ── FINAL SLIDE ── */
+  .slide-final .overline { color: var(--pink); opacity: 0.7; }
+  .slide-final .headline { color: var(--pink); }
+  .slide-final .headline em { color: var(--pink-dark); }
+  .slide-final .subhead { color: var(--pink-dark); }
   .slide-final .body-text { color: #3a1a2a; opacity: 0.7; }
 
   /* floating PNGs */
   #png-layer { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
   .pop-png {
-    position: absolute;
-    width: clamp(55px,12vw,120px);
-    pointer-events: none;
-    opacity: 0;
+    position: absolute; width: clamp(55px,12vw,120px);
+    pointer-events: none; opacity: 0;
     animation:
-      pop-in var(--pop-dur, 0.4s) cubic-bezier(0.34,1.56,0.64,1) var(--pop-delay,0s) forwards,
+      pop-in var(--pop-dur,0.4s) cubic-bezier(0.34,1.56,0.64,1) var(--pop-delay,0s) forwards,
       float-idle 4s ease-in-out calc(var(--pop-dur,0.4s) + var(--pop-delay,0s)) infinite;
   }
   @keyframes pop-in {
-    from { opacity:0; transform: scale(0) rotate(var(--rot,0deg)); }
-    to   { opacity:1; transform: scale(1) rotate(var(--rot,0deg)); }
+    from { opacity:0; transform:scale(0) rotate(var(--rot,0deg)); }
+    to   { opacity:1; transform:scale(1) rotate(var(--rot,0deg)); }
   }
   @keyframes float-idle {
-    0%,100% { transform: scale(1) rotate(var(--rot,0deg)) translateY(0); }
-    50%     { transform: scale(1) rotate(var(--rot,0deg)) translateY(-10px); }
+    0%,100% { transform:scale(1) rotate(var(--rot,0deg)) translateY(0); }
+    50%     { transform:scale(1) rotate(var(--rot,0deg)) translateY(-10px); }
   }
-
-  /* PNG upload panel */
-  #png-upload-panel {
-    position: relative; z-index: 3;
-    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 0.5rem;
-  }
-  .png-btn {
-    background: rgba(196,92,46,0.08); border: 1px dashed rgba(196,92,46,0.4);
-    border-radius: 10px; padding: 0.38rem 0.9rem;
-    font-size: 0.78rem; color: #C45C2E; cursor: pointer;
-    position: relative; overflow: hidden; transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .png-btn:hover { background: rgba(196,92,46,0.18); }
-  .png-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 
   /* celebrate button */
   #celebrate-btn {
-    background: rgba(196,92,46,0.1); border: 1px solid rgba(196,92,46,0.4);
-    color: #C45C2E; border-radius: 100px; padding: 0.55rem 1.8rem;
+    background: rgba(200,72,120,0.1); border: 1px solid rgba(200,72,120,0.4);
+    color: var(--pink); border-radius: 100px; padding: 0.55rem 1.8rem;
     font-size: 0.9rem; cursor: pointer; font-family: 'DM Sans',sans-serif;
     letter-spacing: 0.05em; transition: all 0.2s; position: relative; z-index: 3;
   }
-  #celebrate-btn:hover { background: rgba(196,92,46,0.2); }
+  #celebrate-btn:hover { background: rgba(200,72,120,0.2); }
 
-  /* ── PASSWORD GATE (slide 1) ── */
+  /* ── PASSWORD GATE ── */
   .gate-small {
-    font-size: clamp(0.85rem,2.2vw,1rem);
-    color: #a06080; letter-spacing: 0.02em; text-align: center;
-    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.85rem,2.2vw,1rem); color: #a06080;
+    letter-spacing: 0.02em; text-align: center;
   }
   .gate-question {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.5rem,5vw,2.6rem);
-    font-weight: 700; line-height: 1.2; text-align: center;
-    color: #3a1a2a;
+    font-weight: 700; line-height: 1.2; text-align: center; color: #3a1a2a;
   }
-  .gate-input-wrap {
-    position: relative; width: min(340px,85vw);
-  }
+  .gate-input-wrap { position: relative; width: min(340px,85vw); }
   #gate-input {
-    width: 100%; padding: 0.85rem 1.2rem;
-    border-radius: 16px;
+    width: 100%; padding: 0.85rem 1.2rem; border-radius: 16px;
     border: 2px solid rgba(200,100,140,0.3);
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
     font-family: 'Playfair Display', serif;
     font-size: clamp(1rem,3vw,1.25rem);
-    color: #3a1a2a; text-align: center;
-    outline: none;
-    transition: border-color 0.25s, background 0.25s;
-    -webkit-appearance: none;
+    color: #3a1a2a; text-align: center; outline: none;
+    transition: border-color 0.25s, background 0.25s; -webkit-appearance: none;
   }
   #gate-input::placeholder { color: rgba(160,96,128,0.5); }
   #gate-input:focus { border-color: rgba(200,100,140,0.65); background: rgba(255,255,255,0.9); }
   #gate-input.wrong {
-    border-color: #e84040;
-    background: rgba(255,80,80,0.1);
+    border-color: #e84040; background: rgba(255,80,80,0.1);
     animation: gate-shake 0.45s cubic-bezier(0.36,0.07,0.19,0.97);
   }
   @keyframes gate-shake {
-    0%,100%{transform:translateX(0)}
-    15%{transform:translateX(-9px)}
-    30%{transform:translateX(9px)}
-    45%{transform:translateX(-7px)}
-    60%{transform:translateX(7px)}
-    75%{transform:translateX(-4px)}
+    0%,100%{transform:translateX(0)} 15%{transform:translateX(-9px)}
+    30%{transform:translateX(9px)}  45%{transform:translateX(-7px)}
+    60%{transform:translateX(7px)}  75%{transform:translateX(-4px)}
     90%{transform:translateX(4px)}
   }
   #gate-btn {
-    width: min(340px,85vw);
-    padding: 0.8rem;
-    border-radius: 100px;
-    border: none;
+    width: min(340px,85vw); padding: 0.8rem; border-radius: 100px; border: none;
     background: linear-gradient(135deg,#e8789a,#c84878);
-    color: #fff; font-family: 'DM Sans', sans-serif;
-    font-size: 1rem; font-weight: 500;
-    cursor: pointer; letter-spacing: 0.04em;
+    color: #fff; font-family: 'DM Sans',sans-serif;
+    font-size: 1rem; font-weight: 500; cursor: pointer; letter-spacing: 0.04em;
     transition: opacity 0.2s, transform 0.15s;
     box-shadow: 0 4px 20px rgba(200,72,120,0.3);
   }
@@ -438,12 +392,15 @@ function openMemTab(idx){
     display: none; flex-direction: column;
     align-items: center; gap: 0.6rem; text-align: center;
   }
-  #gate-success .emoji { font-size: clamp(4rem,15vw,7rem); animation: pop-emoji 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards; }
-  @keyframes pop-emoji { from{opacity:0;transform:scale(0.3)}to{opacity:1;transform:scale(1)} }
+  #gate-success .emoji {
+    width: clamp(4rem,15vw,7rem); height: clamp(4rem,15vw,7rem);
+    animation: pop-emoji 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+  @keyframes pop-emoji { from{opacity:0;transform:scale(0.3)} to{opacity:1;transform:scale(1)} }
   #gate-success .welcome {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.4rem,5vw,2.2rem);
-    font-weight: 700; color: #c84878; letter-spacing: 0.04em;
+    font-weight: 700; color: var(--pink); letter-spacing: 0.04em;
   }
   #gate-success .swipe-hint-gate {
     font-size: 0.82rem; opacity: 0.45; color: #a06080; margin-top: 0.4rem;
@@ -456,135 +413,163 @@ function openMemTab(idx){
 <body>
 
 <canvas id="confetti-canvas"></canvas>
-
 <div id="reel">
 
-  <!-- SLIDE 1: OPENING -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 1 — PASSWORD GATE
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-1" data-index="0">
-    <!-- no deco blobs on white-pink slide -->
     <div class="content-stack">
-      <!-- question state -->
       <div id="gate-form" style="display:flex;flex-direction:column;align-items:center;gap:1.1rem;width:100%;">
         <p class="gate-small anim-child">are you really momina??</p>
         <p class="gate-question anim-child">what was the nickname<br>you gave me in our dms?</p>
         <div class="gate-input-wrap anim-child">
-          <input id="gate-input" type="text" placeholder="type your answer…" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkAnswer()">
+          <input id="gate-input" type="text" placeholder="type your answer…"
+            autocomplete="off" autocorrect="off" spellcheck="false"
+            onkeydown="if(event.key==='Enter')checkAnswer()">
         </div>
         <button id="gate-btn" class="anim-child" onclick="checkAnswer()">confirm ✦</button>
       </div>
-      <!-- success state -->
       <div id="gate-success">
-        <div class="emoji"><img src="hug.png" style="width:100%;height:100%;object-fit:contain;"></div>
+        <img class="emoji" src="hug.png" alt="">
         <div class="welcome">welcomeeee</div>
         <p class="swipe-hint-gate">Swipe up to begin ↑</p>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 2: COUNTDOWN -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 2 — ELAPSED TIME
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-2" data-index="1">
     <div class="content-stack">
-      <p class="overline anim-child">Counting down to the big day</p>
-      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,4rem);color:#c84878;">Your Birthday<br><em style="color:#8B2252;">Countdown</em></div>
+      <p class="overline anim-child">You've been alive on this day for</p>
+      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,4rem);">Time that has<br><em>elapsed</em></div>
       <div class="countdown-grid anim-child">
         <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
         <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Hours</span></div>
         <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Mins</span></div>
         <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Secs</span></div>
       </div>
-      <p class="body-text anim-child">Every second ticking closer to your special day.</p>
-      <p class="stat-label anim-child">17 · July · 2026</p>
+      <p class="body-text anim-child">Every second of your birthday, ticking away beautifully.</p>
+      <p class="stat-label anim-child">Since 12:00 AM · 17 July 2026</p>
     </div>
   </div>
 
-  <!-- SLIDE 3: MESSAGE -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 3 — HEARTFELT MESSAGE
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-3" data-index="2">
     <div class="content-stack">
       <p class="overline anim-child">A message from the heart</p>
-      <div class="headline anim-child" style="font-size:clamp(1.8rem,6vw,3.2rem);color:#c84878;">"</div>
-      <p class="body-text anim-child" style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,2.8vw,1.35rem);opacity:0.9;max-width:560px;" id="main-message">
-        Write your heartfelt message here. Tell them how much they mean to you, how proud you are, or share your favourite memory together.
+      <div class="headline anim-child" style="font-size:clamp(1.8rem,6vw,3.2rem);">"</div>
+      <p class="body-text anim-child" id="main-message"
+        style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,2.8vw,1.35rem);opacity:0.9;max-width:560px;">
+        Write your heartfelt message here. Tell them how much they mean to you,
+        how proud you are, or share your favourite memory together.
       </p>
-      <div class="headline anim-child" style="font-size:clamp(1.8rem,6vw,3.2rem);color:#c84878;">"</div>
+      <div class="headline anim-child" style="font-size:clamp(1.8rem,6vw,3.2rem);">"</div>
     </div>
   </div>
 
-  <!-- SLIDE 4: SUPERPOWERS -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 4 — SUPERPOWERS
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-4" data-index="3">
     <div class="content-stack">
       <p class="overline anim-child">What makes you, you</p>
-      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,4.2rem);color:#c84878;">Your<br><em style="color:#8B2252;">Superpowers</em></div>
+      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,4.2rem);">Your<br><em>Superpowers</em></div>
       <div class="trait-list anim-child" id="trait-list"></div>
     </div>
   </div>
 
-  <!-- SLIDE 5: PHOTO MEMORY (carousel) -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 5 — FAVOURITE MEMORIES
+       Tap a tab to expand and read the memory.
+       ─────────────────────────────────────────────────
+       HOW TO EDIT:
+         • Change the label inside <span class="mem-tab-label">
+         • Write the memory paragraph inside <p> in .mem-panel
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-5" data-index="4">
     <div class="content-stack">
       <p class="overline anim-child">Favourite memories</p>
-      <div class="memory-carousel-wrap anim-child">
-        <div class="memory-carousel" id="memory-carousel">
-          <div class="memory-card-item" id="mem-1">
-            <span class="card-num">01</span>
-            <img src="camera.png" style="width:2rem;height:2rem;object-fit:contain;">
-            <span>tap to add</span>
-            <input type="file" accept="image/*" onchange="loadMemory(this,1)">
+
+      <div class="mem-tabs-wrap anim-child">
+        <!-- TAB ROW -->
+        <div class="mem-tabs">
+
+          <!-- TAB 1 -->
+          <div class="mem-tab" onclick="openMemTab(0)">
+            <span class="mem-tab-num">01</span>
+            <!-- ★ EDIT TAB TITLE HERE ★ -->
+            <span class="mem-tab-label">when i taught you during the examsss</span>
           </div>
-          <div class="memory-card-item" id="mem-2">
-            <span class="card-num">02</span>
-            <img src="camera.png" style="width:2rem;height:2rem;object-fit:contain;">
-            <span>tap to add</span>
-            <input type="file" accept="image/*" onchange="loadMemory(this,2)">
+
+          <!-- TAB 2 -->
+          <div class="mem-tab" onclick="openMemTab(1)">
+            <span class="mem-tab-num">02</span>
+            <!-- ★ EDIT TAB TITLE HERE ★ -->
+            <span class="mem-tab-label">Memory two title</span>
           </div>
-          <div class="memory-card-item" id="mem-3">
-            <span class="card-num">03</span>
-            <img src="camera.png" style="width:2rem;height:2rem;object-fit:contain;">
-            <span>tap to add</span>
-            <input type="file" accept="image/*" onchange="loadMemory(this,3)">
+
+          <!-- TAB 3 -->
+          <div class="mem-tab" onclick="openMemTab(2)">
+            <span class="mem-tab-num">03</span>
+            <!-- ★ EDIT TAB TITLE HERE ★ -->
+            <span class="mem-tab-label">Memory three title</span>
           </div>
+
         </div>
-        <div class="memory-dots">
-          <div class="memory-dot active" id="mdot-0"></div>
-          <div class="memory-dot" id="mdot-1"></div>
-          <div class="memory-dot" id="mdot-2"></div>
+
+        <!-- SHARED EXPAND PANEL -->
+        <div class="mem-panel" id="mem-panel">
+          <!-- content is swapped by JS when a tab is clicked -->
+          <p id="mem-panel-text"></p>
         </div>
       </div>
-      <p class="body-text anim-child" style="font-size:clamp(0.82rem,2.1vw,0.95rem);" id="memory-caption">
-        Add your favourite memory caption here — a place, a moment, a feeling.
-      </p>
+
     </div>
   </div>
 
-  <!-- SLIDE 6: SONG OF THE YEAR -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 6 — SONG OF THE YEAR
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-6" data-index="5">
     <div class="content-stack">
       <p class="overline anim-child">Your Birthday Soundtrack</p>
-      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,4rem);color:#c84878;">Song of<br><em style="color:#8B2252;">the Year</em></div>
+      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,4rem);">Song of<br><em>the Year</em></div>
       <div class="anim-child" style="display:flex;align-items:center;gap:1.4rem;margin-top:0.8rem;flex-wrap:wrap;justify-content:center;">
         <div class="album-slot" id="album-slot">
-          <div class="vinyl"><img src="musical_note.png" style="width:2rem;height:2rem;object-fit:contain;"></div>
+          <div class="vinyl">
+            <img src="musical_note.png" style="width:2rem;height:2rem;object-fit:contain;" alt="">
+          </div>
           <span style="font-size:0.7rem;opacity:0.6;text-align:center;line-height:1.4;">Tap to add<br>album cover</span>
           <input type="file" accept="image/*" onchange="loadAlbum(this)">
         </div>
         <div style="text-align:left;">
-          <p style="font-family:'Playfair Display',serif;font-size:clamp(1rem,3vw,1.4rem);color:#c84878;margin-bottom:6px;" id="song-title">Your Song Title</p>
-          <p style="font-size:0.82rem;opacity:0.5;color:#8B2252;" id="song-artist">Artist Name</p>
+          <p id="song-title" style="font-family:'Playfair Display',serif;font-size:clamp(1rem,3vw,1.4rem);color:var(--pink);margin-bottom:6px;">Your Song Title</p>
+          <p id="song-artist" style="font-size:0.82rem;opacity:0.5;color:#8B2252;">Artist Name</p>
           <p style="font-size:0.75rem;opacity:0.4;margin-top:8px;font-style:italic;">This one plays every time<br>we think of you.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 7: WISHES -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 7 — WISHES
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-7" data-index="6">
     <div class="content-stack">
       <p class="overline anim-child">Wishes for your year ahead</p>
-      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,3.8rem);color:#c84878;">May this year<br><em style="color:#8B2252;">bring you…</em></div>
+      <div class="headline anim-child" style="font-size:clamp(2rem,7vw,3.8rem);">May this year<br><em>bring you…</em></div>
       <ul class="wish-list anim-child" id="wish-list"></ul>
     </div>
   </div>
 
-  <!-- SLIDE FINAL: CELEBRATE (WHITE) -->
+  <!-- ═══════════════════════════════════════════════════
+       SLIDE 8 — CELEBRATE (white)
+       ═══════════════════════════════════════════════════ -->
   <div class="slide slide-final" data-index="7">
     <div id="png-layer"></div>
     <div class="content-stack" style="position:relative;z-index:3;">
@@ -592,7 +577,10 @@ function openMemTab(idx){
       <div class="headline anim-child" style="font-size:clamp(3rem,12vw,7.5rem);">Happy</div>
       <div class="headline anim-child" style="font-size:clamp(3rem,12vw,7.5rem);margin-top:-0.15em;font-style:italic;">Birthday</div>
       <div class="subhead anim-child" id="name-display-final" style="margin-top:0.8rem;font-size:clamp(1.4rem,4.5vw,2.5rem);">[ Your Name Here ]</div>
-      <p class="body-text anim-child" style="margin-top:0.8rem;">With all the love in the world. <img src="heart.png" style="width:1.1em;height:1.1em;object-fit:contain;vertical-align:middle;"></p>
+      <p class="body-text anim-child" style="margin-top:0.8rem;">
+        With all the love in the world.
+        <img src="heart.png" style="width:1.1em;height:1.1em;object-fit:contain;vertical-align:middle;" alt="">
+      </p>
       <button id="celebrate-btn" class="anim-child" onclick="launchConfetti()">✦ Celebrate!</button>
     </div>
   </div>
@@ -617,136 +605,142 @@ function openMemTab(idx){
   <button id="disc-toggle" onclick="toggleAudio()">▶</button>
 </div>
 
-<!-- ╔══════════════════════════════╗
-     ║   CUSTOMISE EVERYTHING HERE  ║
-     ╚══════════════════════════════╝ -->
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║              CUSTOMISE EVERYTHING HERE                   ║
+     ╠══════════════════════════════════════════════════════════╣
+     ║  1. PERSON_NAME  — her name shown on the final slide     ║
+     ║  2. MAIN_MESSAGE — the italic quote on slide 3           ║
+     ║  3. SONG_TITLE / SONG_ARTIST — shown on slide 6          ║
+     ║  4. TRAITS       — superpowers pills on slide 4          ║
+     ║  5. SONGS        — one audio file per slide              ║
+     ║  6. WISHES       — the wish list on slide 7              ║
+     ║  7. PNG_FILES    — PNGs that pop up on the final slide   ║
+     ╚══════════════════════════════════════════════════════════╝ -->
 <script>
-const PERSON_NAME    = "[ Momina Jan ]";
-const BIRTHDAY_DATE  = new Date('2026-07-17T00:00:00'); // 17 July 2026
-const MAIN_MESSAGE   = `Write your heartfelt message here. Tell them how much they mean to you, how proud you are, or share your favourite memory together.`;
-const MEMORY_CAPTION = "Add your favourite memory caption here — a place, a moment, a feeling.";
-const SONG_TITLE     = "Espresso";
-const SONG_ARTIST    = "Sabrina Carpenter";
 
+// ① Name shown on final slide
+const PERSON_NAME = "Momina";
+
+// ② The italic quote on slide 3
+const MAIN_MESSAGE = `Write your heartfelt message here. Tell them how much they mean to you, how proud you are, or share your favourite memory together.`;
+
+// ③ Song of the Year slide
+const SONG_TITLE  = "Espresso";
+const SONG_ARTIST = "Sabrina Carpenter";
+
+// ④ Superpowers
 const TRAITS = [
-  "Contagious Joy","Fierce loyalty","Nurturing Soul",
-  "Morning sunshine","Best tea spills","Sab theek karne wali vibes",
-  "Tufff Energy","Kindest Heart"
+  "Contagious Joy", "Fierce Loyalty", "Nurturing Soul",
+  "Morning Sunshine", "Best Tea Spills", "Sab theek karne wali vibes",
+  "Tufff Energy", "Kindest Heart"
 ];
 
-// Music per slide. Set src: "yourfile.mp3" to add audio.
+// ⑤ Music — one file per slide (put mp3s in the same folder)
+//    Leave src:"" for silence on that slide
 const SONGS = [
-  {title:"Something About You",  artist:"Eyedress",           src:"Something_About_You_-_Eyedress.mp3"},
-  {title:"Ecoute Chérie",        artist:"Vendredi Sur Mer",   src:"Ecoute_Cherie_-_Vendredi_Sur_Mer.wav"},
-  {title:"Fukashigi No Karte",   artist:"Mai Sakurajima",     src:"Fukashgi_no_karte_-_Mai_Sakurajima.mp3"},
-  {title:"Qarar",                artist:"Ismail Khan",        src:"Qarar_-_Ismail_Khan.mp3"},
-  {title:"I Thought I Saw Your Face Today",           artist:"She And Him",src:"Apocalypse_-_Cigarettes.mp3"},
-  {title:"Espresso",             artist:"Sabrina Carpenter",  src:"espresso.mp3"},  // add file when ready
-  {title:"West Coast",           artist:"Lana Del Rey",       src:"west_coast.mp3"},  // add file when ready
-  {title:"Golden Brown",         artist:"The Stranglers",     src:""},  // add file when ready
+  { title:"Something About You",  artist:"Eyedress",            src:"Something_About_You_-_Eyedress.mp3"    },
+  { title:"Ecoute Chérie",        artist:"Vendredi Sur Mer",    src:"Ecoute_Cherie_-_Vendredi_Sur_Mer.mp3"  },
+  { title:"Fukashigi No Karte",   artist:"Mai Sakurajima",      src:"Fukashgi_no_karte_-_Mai_Sakurajima.mp3" },
+  { title:"Qarar",                artist:"Ismail Khan",         src:"Qarar_-_Ismail_Khan.mp3"               },
+  { title:"Apocalypse",           artist:"Cigarettes After Sex",src:"Apocalypse_-_Cigarettes.mp3"           },
+  { title:"Espresso",             artist:"Sabrina Carpenter",   src:""  }, // ← add filename when ready
+  { title:"West Coast",           artist:"Lana Del Rey",        src:""  }, // ← add filename when ready
+  { title:"Golden Brown",         artist:"The Stranglers",      src:""  }, // ← add filename when ready
 ];
 
+// ⑥ Wishes
 const WISHES = [
-  {icon:`<img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;">`, text:"More adventures than you can count"},
-  {icon:`<img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;">`, text:"People who hold you the way you hold them"},
-  {icon:`<img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;">`, text:"Mornings that feel like a warm hug"},
-  {icon:`<img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;">`, text:"Dreams that keep growing bigger"},
-  {icon:`<img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;">`, text:"A soundtrack that matches every mood"},
+  { text: "More adventures than you can count"          },
+  { text: "People who hold you the way you hold them"   },
+  { text: "Mornings that feel like a warm hug"          },
+  { text: "Dreams that keep growing bigger"             },
+  { text: "A soundtrack that matches every mood"        },
 ];
+
+// ⑦ PNG pop-ups on the final slide
+//    Put the files in the same folder and list their names here
+const PNG_FILES = [
+  // "balloon.png",
+  // "star.png",
+  // "flower.png",
+];
+
 </script>
-<!-- ╚ end customisation ╝ -->
+<!-- ╚ end customisation section ╝ -->
 
 <script>
 // ── Apply config ──────────────────────────────────────────────
-document.querySelectorAll('#name-display,#name-display-final').forEach(e=>e.textContent=PERSON_NAME);
-document.getElementById('main-message').textContent=MAIN_MESSAGE;
-document.getElementById('memory-caption').textContent=MEMORY_CAPTION;
-document.getElementById('song-title').textContent=SONG_TITLE;
-document.getElementById('song-artist').textContent=SONG_ARTIST;
+document.getElementById('name-display-final').textContent = PERSON_NAME;
+document.getElementById('main-message').textContent       = MAIN_MESSAGE;
+document.getElementById('song-title').textContent         = SONG_TITLE;
+document.getElementById('song-artist').textContent        = SONG_ARTIST;
 
-const tl=document.getElementById('trait-list');
-TRAITS.forEach(t=>{const d=document.createElement('div');d.className='trait';d.textContent=t;tl.appendChild(d);});
+const tl = document.getElementById('trait-list');
+TRAITS.forEach(t => {
+  const d = document.createElement('div');
+  d.className = 'trait'; d.textContent = t; tl.appendChild(d);
+});
 
-const wl=document.getElementById('wish-list');
-WISHES.forEach(w=>{const li=document.createElement('li');li.innerHTML=`<span class="icon">${w.icon}</span>${w.text}`;wl.appendChild(li);});
+const wl = document.getElementById('wish-list');
+WISHES.forEach(w => {
+  const li = document.createElement('li');
+  li.innerHTML = `<span class="icon"><img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;" alt=""></span>${w.text}`;
+  wl.appendChild(li);
+});
 
 // ── Slide engine ──────────────────────────────────────────────
-const slides=Array.from(document.querySelectorAll('.slide'));
-const total=slides.length;
-let current=0, busy=false;
-let gateUnlocked=false; // slide 1 gate
-
-// ── PASSWORD GATE ─────────────────────────────────────────────
-function checkAnswer(){
-  const inp=document.getElementById('gate-input');
-  const val=inp.value.trim().toLowerCase();
-  if(val==='hamzito'){
-    // success
-    document.getElementById('gate-form').style.display='none';
-    const success=document.getElementById('gate-success');
-    success.style.display='flex';
-    gateUnlocked=true;
-  } else {
-    // wrong — shake + red
-    inp.classList.remove('wrong');
-    void inp.offsetWidth; // reflow to restart animation
-    inp.classList.add('wrong');
-    inp.value='';
-    inp.placeholder='try again…';
-    setTimeout(()=>{ inp.classList.remove('wrong'); inp.placeholder='type your answer…'; },1200);
-  }
-}
+const slides = Array.from(document.querySelectorAll('.slide'));
+const total  = slides.length;
+let current  = 0, busy = false, gateUnlocked = false;
 
 function setPositions(anim){
   slides.forEach((s,i)=>{
-    s.style.transition=anim?`transform var(--dur) cubic-bezier(0.4,0,0.1,1)`:'none';
-    s.style.transform=`translateY(${(i-current)*100}vh)`;
+    s.style.transition = anim ? `transform var(--dur) cubic-bezier(0.4,0,0.1,1)` : 'none';
+    s.style.transform  = `translateY(${(i-current)*100}vh)`;
   });
 }
-// snap-back uses a quicker spring
 function snapBack(){
   slides.forEach((s,i)=>{
-    s.style.transition=`transform 0.4s cubic-bezier(0.25,1,0.4,1)`;
-    s.style.transform=`translateY(${(i-current)*100}vh)`;
+    s.style.transition = `transform 0.4s cubic-bezier(0.25,1,0.4,1)`;
+    s.style.transform  = `translateY(${(i-current)*100}vh)`;
   });
 }
 setPositions(false);
 slides[0].classList.add('in-view');
 
-// dots
-const dotsEl=document.getElementById('dots');
+// build dots
+const dotsEl = document.getElementById('dots');
 slides.forEach((_,i)=>{
-  const d=document.createElement('div');
-  d.className='dot'+(i===0?' active':'');
-  d.onclick=()=>goTo(i);
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' active':'');
+  d.onclick = () => goTo(i);
   dotsEl.appendChild(d);
 });
 
 function goTo(idx){
   if(idx===current||idx<0||idx>=total||busy) return;
-  // gate: can't leave slide 0 until unlocked
   if(current===0&&idx>0&&!gateUnlocked) return;
-  busy=true;
+  busy = true;
   slides[current].classList.remove('in-view');
   slides[current].querySelectorAll('.anim-child').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation='';});
-  current=idx;
+  current = idx;
   setPositions(true);
   setTimeout(()=>{
     slides[current].classList.add('in-view');
     slides[current].querySelectorAll('.anim-child').forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation='';});
-    busy=false;
-  },30);
+    busy = false;
+  }, 30);
   if(current===total-1){ setTimeout(launchConfetti,700); renderPngs(); }
   updateAudio(current);
   updateUI();
 }
-function changeSlide(dir){if(!busy)goTo(current+dir);}
+function changeSlide(dir){ if(!busy) goTo(current+dir); }
 
 function updateUI(){
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current));
-  document.getElementById('btn-prev').style.opacity=current===0?'0.2':'1';
-  document.getElementById('btn-next').style.opacity=current===total-1?'0.2':'1';
-  document.getElementById('swipe-hint').style.opacity=current===total-1?'0':'0.32';
+  document.getElementById('btn-prev').style.opacity = current===0 ? '0.2' : '1';
+  document.getElementById('btn-next').style.opacity = current===total-1 ? '0.2' : '1';
+  document.getElementById('swipe-hint').style.opacity = current===total-1 ? '0' : '0.32';
 }
 updateUI();
 
@@ -757,7 +751,7 @@ document.addEventListener('keydown',e=>{
 });
 
 // wheel
-let wc=false;
+let wc = false;
 document.addEventListener('wheel',e=>{
   if(wc) return; wc=true;
   if(e.deltaY>30) changeSlide(1);
@@ -765,247 +759,165 @@ document.addEventListener('wheel',e=>{
   setTimeout(()=>{wc=false;},900);
 },{passive:true});
 
-// touch — follows finger in real time, snaps on release
+// touch — follows finger in real time
 let ty0=0, dragDelta=0, dragging=false;
 
 function applyDrag(delta){
-  const vh=window.innerHeight;
-  const maxDrag=vh*0.4;
+  const vh=window.innerHeight, maxDrag=vh*0.4;
   let d=delta;
-  // block upward drag on slide 0 if gate not unlocked
   if(current===0&&d<0&&!gateUnlocked) d=0;
-  if((current===0&&d>0)||(current===total-1&&d<0)){
-    d=d*(0.2);
-  }
+  if((current===0&&d>0)||(current===total-1&&d<0)) d*=0.2;
   d=Math.max(-maxDrag,Math.min(maxDrag,d));
   slides.forEach((s,i)=>{
     s.style.transition='none';
     s.style.transform=`translateY(calc(${(i-current)*100}vh + ${d}px))`;
   });
 }
-
-document.addEventListener('touchstart',e=>{
-  if(busy) return;
-  ty0=e.touches[0].clientY;
-  dragDelta=0;
-  dragging=true;
-},{passive:true});
-
-document.addEventListener('touchmove',e=>{
-  if(!dragging) return;
-  dragDelta=e.touches[0].clientY - ty0;
-  applyDrag(dragDelta);
-},{passive:true});
-
-document.addEventListener('touchend',()=>{
-  if(!dragging) return;
-  dragging=false;
+document.addEventListener('touchstart',e=>{ if(busy)return; ty0=e.touches[0].clientY; dragDelta=0; dragging=true; },{passive:true});
+document.addEventListener('touchmove', e=>{ if(!dragging)return; dragDelta=e.touches[0].clientY-ty0; applyDrag(dragDelta); },{passive:true});
+document.addEventListener('touchend', ()=>{
+  if(!dragging)return; dragging=false;
   if(dragDelta<-10) goTo(current+1);
   else if(dragDelta>10) goTo(current-1);
   else snapBack();
 },{passive:true});
 
-// ── COUNTDOWN ────────────────────────────────────────────────
-function startCountdown(){
-  function tick(){
-    const diff=BIRTHDAY_DATE-new Date();
-    if(diff<=0){
-      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id=>document.getElementById(id).textContent='00');
-      return;
-    }
-    const days=Math.floor(diff/864e5);
-    const hours=Math.floor((diff%864e5)/36e5);
-    const mins=Math.floor((diff%36e5)/6e4);
-    const secs=Math.floor((diff%6e4)/1e3);
-    document.getElementById('cd-days').textContent=String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent=String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent=String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent=String(secs).padStart(2,'0');
+// ── PASSWORD GATE ─────────────────────────────────────────────
+function checkAnswer(){
+  const inp = document.getElementById('gate-input');
+  const val = inp.value.trim().toLowerCase();
+  if(val==='hamzito'){
+    document.getElementById('gate-form').style.display='none';
+    document.getElementById('gate-success').style.display='flex';
+    gateUnlocked=true;
+  } else {
+    inp.classList.remove('wrong');
+    void inp.offsetWidth;
+    inp.classList.add('wrong');
+    inp.value=''; inp.placeholder='try again…';
+    setTimeout(()=>{ inp.classList.remove('wrong'); inp.placeholder='type your answer…'; },1200);
   }
-  tick(); setInterval(tick,1000);
 }
-startCountdown();
 
-// ── AUDIO ────────────────────────────────────────────────────
+// ── ELAPSED TIME since 12:00 AM July 17 2026 ─────────────────
+const BIRTHDAY_START = new Date('2026-07-17T00:00:00');
+(function tick(){
+  const diff = new Date() - BIRTHDAY_START;
+  const abs  = Math.abs(diff);
+  const days  = Math.floor(abs/864e5);
+  const hours = Math.floor((abs%864e5)/36e5);
+  const mins  = Math.floor((abs%36e5)/6e4);
+  const secs  = Math.floor((abs%6e4)/1e3);
+  const pad   = n => String(n).padStart(2,'0');
+  document.getElementById('cd-days').textContent  = pad(days);
+  document.getElementById('cd-hours').textContent = pad(hours);
+  document.getElementById('cd-mins').textContent  = pad(mins);
+  document.getElementById('cd-secs').textContent  = pad(secs);
+  setTimeout(tick,1000);
+})();
+
+// ── AUDIO ─────────────────────────────────────────────────────
 let audio=null, audioPlaying=false, currentSrc='', fadeTimer=null;
 
-function fadeIn(audioEl, duration=500){
-  audioEl.volume=0;
-  const steps=30;
-  const interval=duration/steps;
-  let step=0;
+function fadeIn(el,dur=500){
+  el.volume=0; const steps=30, iv=dur/steps; let s=0;
+  clearInterval(fadeTimer);
+  fadeTimer=setInterval(()=>{ el.volume=Math.min(1,++s/steps); if(s>=steps)clearInterval(fadeTimer); },iv);
+}
+function fadeOutAndStop(el,dur=300,cb){
+  const sv=el.volume, steps=20, iv=dur/steps; let s=0;
   clearInterval(fadeTimer);
   fadeTimer=setInterval(()=>{
-    step++;
-    audioEl.volume=Math.min(1, step/steps);
-    if(step>=steps) clearInterval(fadeTimer);
-  }, interval);
+    el.volume=Math.max(0,sv*(1-++s/steps));
+    if(s>=steps){ clearInterval(fadeTimer); el.pause(); if(cb)cb(); }
+  },iv);
 }
-
-function fadeOutAndStop(audioEl, duration=300, cb){
-  const startVol=audioEl.volume;
-  const steps=20;
-  const interval=duration/steps;
-  let step=0;
-  clearInterval(fadeTimer);
-  fadeTimer=setInterval(()=>{
-    step++;
-    audioEl.volume=Math.max(0, startVol*(1-step/steps));
-    if(step>=steps){
-      clearInterval(fadeTimer);
-      audioEl.pause();
-      if(cb) cb();
-    }
-  }, interval);
+function updateDiscUI(song,playing){
+  document.getElementById('disc').classList.toggle('spinning',playing);
+  document.getElementById('disc-toggle').textContent=playing?'⏸':'▶';
+  if(song){ document.getElementById('disc-title').textContent=song.title; document.getElementById('disc-artist').textContent=song.artist; }
+  document.getElementById('disc-player').classList.toggle('on-song-slide',current===5);
 }
-
-function updateDiscUI(song, playing){
-  const disc=document.getElementById('disc');
-  const tog=document.getElementById('disc-toggle');
-  disc.classList.toggle('spinning', playing);
-  if(tog) tog.textContent=playing?'⏸':'▶';
-  if(song){
-    document.getElementById('disc-title').textContent=song.title;
-    document.getElementById('disc-artist').textContent=song.artist;
-  }
-  // hide info/toggle on song slide (idx 5), show big disc only
-  document.getElementById('disc-player').classList.toggle('on-song-slide', current===5);
-}
-
 function updateAudio(idx){
-  const song=SONGS[idx];
-  const newSrc=song&&song.src?song.src:'';
+  const song=SONGS[idx], newSrc=song&&song.src?song.src:'';
+  if(newSrc&&newSrc===currentSrc&&audio){ updateDiscUI(song,audioPlaying); return; }
+  const old=audio; audio=null; audioPlaying=false; currentSrc=newSrc;
+  const startNew=()=>{
+    if(!newSrc){ updateDiscUI(song,false); return; }
+    const a=new Audio(newSrc); a.loop=true; a.volume=0; audio=a;
+    a.play().then(()=>{ audioPlaying=true; fadeIn(a,500); updateDiscUI(song,true); }).catch(()=>updateDiscUI(song,false));
+  };
+  if(old&&!old.paused) fadeOutAndStop(old,300,startNew);
+  else { if(old)old.pause(); startNew(); }
+}
+function toggleAudio(){
+  if(!audio)return;
+  if(audioPlaying) fadeOutAndStop(audio,300,()=>{ audioPlaying=false; updateDiscUI(SONGS[current],false); });
+  else audio.play().then(()=>{ audioPlaying=true; fadeIn(audio,500); updateDiscUI(SONGS[current],true); });
+}
 
-  // same track — keep looping
-  if(newSrc&&newSrc===currentSrc&&audio){
-    updateDiscUI(song, audioPlaying);
+// ── MEMORY TABS ───────────────────────────────────────────────
+// ╔════════════════════════════════════════════════════════╗
+// ║  Edit the text for each memory in the array below.    ║
+// ║  These match tab 1, 2, 3 in order.                    ║
+// ╚════════════════════════════════════════════════════════╝
+const MEM_TEXTS = [
+  // ★ MEMORY 1 TEXT — edit here ★
+  `Write your memory about the exam sessions here. What happened, how it felt, the funny moments — all of it.`,
+  // ★ MEMORY 2 TEXT — edit here ★
+  `Write your second memory here. A moment you'll never forget.`,
+  // ★ MEMORY 3 TEXT — edit here ★
+  `Write your third memory here. Something that always makes you smile.`,
+];
+
+let activeMemTab = -1;
+function openMemTab(idx){
+  const tabs  = document.querySelectorAll('.mem-tab');
+  const panel = document.getElementById('mem-panel');
+  const pText = document.getElementById('mem-panel-text');
+
+  if(activeMemTab === idx){
+    // clicking the active tab closes it
+    tabs[idx].classList.remove('active');
+    panel.classList.remove('open');
+    activeMemTab = -1;
     return;
   }
 
-  const oldAudio=audio;
-  audio=null; audioPlaying=false; currentSrc=newSrc;
-
-  const startNew=()=>{
-    if(!newSrc){
-      updateDiscUI(song, false);
-      return;
-    }
-    const a=new Audio(newSrc);
-    a.loop=true; a.volume=0;
-    audio=a;
-    a.play()
-      .then(()=>{ audioPlaying=true; fadeIn(a,500); updateDiscUI(song,true); })
-      .catch(()=>{ updateDiscUI(song,false); });
-  };
-
-  if(oldAudio&&!oldAudio.paused){
-    fadeOutAndStop(oldAudio,300,startNew);
-  } else {
-    if(oldAudio) oldAudio.pause();
-    startNew();
-  }
+  // switch tab
+  tabs.forEach(t=>t.classList.remove('active'));
+  tabs[idx].classList.add('active');
+  pText.textContent = MEM_TEXTS[idx];
+  panel.classList.add('open');
+  activeMemTab = idx;
 }
 
-function toggleAudio(){
-  if(!audio) return;
-  if(audioPlaying){
-    fadeOutAndStop(audio,300,()=>{
-      audioPlaying=false;
-      updateDiscUI(SONGS[current],false);
-    });
-  } else {
-    audio.play().then(()=>{
-      audioPlaying=true;
-      fadeIn(audio,500);
-      updateDiscUI(SONGS[current],true);
-    });
-  }
-}
-
-// ── PHOTO / MEMORY LOAD ──────────────────────────────────────
-function loadPhoto(input,slotId){
-  const slot=document.getElementById(slotId);
-  if(!input.files||!input.files[0])return;
-  const url=URL.createObjectURL(input.files[0]);
-  let img=slot.querySelector('img');
-  if(!img){img=document.createElement('img');slot.appendChild(img);}
-  img.src=url;
-  slot.querySelectorAll('span,div.vinyl,.card-num').forEach(s=>s.style.display='none');
-}
-
-function loadMemory(input, num){
-  const slot=document.getElementById('mem-'+num);
-  if(!input.files||!input.files[0])return;
-  const url=URL.createObjectURL(input.files[0]);
-  let img=slot.querySelector('img');
-  if(!img){img=document.createElement('img');slot.appendChild(img);}
-  img.src=url;
-  slot.querySelectorAll('span,.card-num').forEach(s=>s.style.display='none');
-}
-
+// ── ALBUM COVER ───────────────────────────────────────────────
 function loadAlbum(input){
   const slot=document.getElementById('album-slot');
   if(!input.files||!input.files[0])return;
   const url=URL.createObjectURL(input.files[0]);
-  // update slot image
-  let img=slot.querySelector('img');
-  if(!img){img=document.createElement('img');slot.appendChild(img);}
-  img.src=url;
-  slot.querySelectorAll('span,div.vinyl').forEach(s=>s.style.display='none');
-  // also put on disc
-  const discImg=document.getElementById('disc-img');
-  discImg.src=url; discImg.classList.add('visible');
-}
-
-// ── MEMORY CAROUSEL DOTS ─────────────────────────────────────
-const carousel=document.getElementById('memory-carousel');
-if(carousel){
-  carousel.addEventListener('scroll',()=>{
-    const idx=Math.round(carousel.scrollLeft/(carousel.scrollWidth/3));
-    document.querySelectorAll('.memory-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
-  },{passive:true});
-
-  // drag-to-scroll on desktop
-  let mDown=false,mX=0,mSL=0;
-  carousel.addEventListener('mousedown',e=>{mDown=true;mX=e.pageX;mSL=carousel.scrollLeft;});
-  document.addEventListener('mousemove',e=>{if(!mDown)return;carousel.scrollLeft=mSL-(e.pageX-mX);});
-  document.addEventListener('mouseup',()=>{mDown=false;});
+  let img=slot.querySelector('img.cover');
+  if(!img){ img=document.createElement('img'); img.className='cover'; slot.appendChild(img); }
+  img.src=url; img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;';
+  slot.querySelectorAll('span,.vinyl').forEach(s=>s.style.display='none');
+  const di=document.getElementById('disc-img'); di.src=url; di.classList.add('visible');
 }
 
 // ── PNG POP-UPS ───────────────────────────────────────────────
-// ╔══════════════════════════════════════════════════════════════╗
-// ║  ADD YOUR PNG FILE PATHS BELOW — put all PNGs in the same   ║
-// ║  folder as this HTML file, then list the filenames here.     ║
-// ║  Example: "balloon.png", "star.png", "flower.png"            ║
-// ╚══════════════════════════════════════════════════════════════╝
-const PNG_FILES = [
-  // "image1.png",
-  // "image2.png",
-  // "image3.png",
-  // "image4.png",
-];
-
 const pngLayer=document.getElementById('png-layer');
-
-const SLOT_POSITIONS=[
-  {top:'6%', left:'4%'},  {top:'4%',  right:'5%'},
-  {top:'28%',left:'1%'},  {top:'22%', right:'2%'},
-  {bottom:'6%',left:'5%'},{bottom:'5%',right:'4%'},
-  {top:'50%', left:'0%'}, {top:'55%', right:'1%'},
-  {top:'14%', left:'36%'},{bottom:'18%',left:'34%'},
-  {top:'38%', left:'15%'},{top:'40%', right:'14%'},
+const SLOT_POS=[
+  {top:'6%',left:'4%'},{top:'4%',right:'5%'},{top:'28%',left:'1%'},{top:'22%',right:'2%'},
+  {bottom:'6%',left:'5%'},{bottom:'5%',right:'4%'},{top:'50%',left:'0%'},{top:'55%',right:'1%'},
+  {top:'14%',left:'36%'},{bottom:'18%',left:'34%'},{top:'38%',left:'15%'},{top:'40%',right:'14%'},
 ];
 const ROTS=['-14deg','-7deg','-3deg','0deg','4deg','8deg','13deg','-10deg','6deg','-5deg','11deg','-2deg'];
-
 function renderPngs(){
   pngLayer.innerHTML='';
   PNG_FILES.forEach((src,i)=>{
-    const img=document.createElement('img');
-    img.src=src; img.className='pop-png';
-    const pos=SLOT_POSITIONS[i%SLOT_POSITIONS.length];
-    const rot=ROTS[i%ROTS.length];
-    Object.assign(img.style, pos);
-    img.style.setProperty('--rot',rot);
+    const img=document.createElement('img'); img.src=src; img.className='pop-png';
+    Object.assign(img.style,SLOT_POS[i%SLOT_POS.length]);
+    img.style.setProperty('--rot',ROTS[i%ROTS.length]);
     img.style.setProperty('--pop-dur','0.45s');
     img.style.setProperty('--pop-delay',(i*0.08)+'s');
     pngLayer.appendChild(img);
@@ -1013,49 +925,39 @@ function renderPngs(){
 }
 
 // ── CONFETTI ──────────────────────────────────────────────────
-const canvas=document.getElementById('confetti-canvas');
-const ctx=canvas.getContext('2d');
+const canvas=document.getElementById('confetti-canvas'), ctx=canvas.getContext('2d');
 let pieces=[];
-
 function launchConfetti(){
   canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-  const colors=['#c84878','#e8789a','#f0a8c0','#fdd8e8','#8B2252','#f5c0d8','#ffffff'];
-  for(let i=0;i<220;i++){
-    pieces.push({
-      x:Math.random()*canvas.width, y:Math.random()*-canvas.height*1.2,
-      w:Math.random()*10+4, h:Math.random()*6+3,
-      color:colors[Math.floor(Math.random()*colors.length)],
-      r:Math.random()*Math.PI*2, dr:(Math.random()-0.5)*0.14,
-      dy:Math.random()*3+1.5, dx:(Math.random()-0.5)*1.5,
-    });
-  }
+  const cols=['#c84878','#e8789a','#f0a8c0','#fdd8e8','#8B2252','#f5c0d8','#ffffff'];
+  for(let i=0;i<220;i++) pieces.push({
+    x:Math.random()*canvas.width, y:Math.random()*-canvas.height*1.2,
+    w:Math.random()*10+4, h:Math.random()*6+3,
+    color:cols[Math.floor(Math.random()*cols.length)],
+    r:Math.random()*Math.PI*2, dr:(Math.random()-0.5)*0.14,
+    dy:Math.random()*3+1.5, dx:(Math.random()-0.5)*1.5,
+  });
   requestAnimationFrame(drawConfetti);
 }
-
 function drawConfetti(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   pieces=pieces.filter(p=>p.y<canvas.height+20);
   pieces.forEach(p=>{
-    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);
-    ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-    ctx.restore();
-    p.y+=p.dy;p.x+=p.dx;p.r+=p.dr;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+    ctx.fillStyle=p.color; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore();
+    p.y+=p.dy; p.x+=p.dx; p.r+=p.dr;
   });
   if(pieces.length>0) requestAnimationFrame(drawConfetti);
 }
 
 // ── AUTOPLAY on first interaction ─────────────────────────────
-// Browsers block autoplay until the user touches/clicks anything.
-// We start slide 0's music the moment they interact with the page.
 let autoplayStarted=false;
 function tryAutoplay(){
-  if(autoplayStarted) return;
-  autoplayStarted=true;
-  updateAudio(0);
+  if(autoplayStarted)return; autoplayStarted=true; updateAudio(0);
 }
-document.addEventListener('click', tryAutoplay, {once:true});
-document.addEventListener('touchstart', tryAutoplay, {once:true, passive:true});
-document.addEventListener('keydown', tryAutoplay, {once:true});
+document.addEventListener('click',    tryAutoplay, {once:true});
+document.addEventListener('touchstart',tryAutoplay, {once:true,passive:true});
+document.addEventListener('keydown',   tryAutoplay, {once:true});
 </script>
 </body>
 </html>

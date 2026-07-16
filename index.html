@@ -461,10 +461,10 @@
        ═══════════════════════════════════════════════════ -->
   <div class="slide slide-3" data-index="2">
     <div class="content-stack">
-      <p class="overline anim-child">Apke liye message</p>
+      <p class="overline anim-child">message</p>
       <div class="headline anim-child" style="font-size:clamp(1.8rem,6vw,3.2rem);">"</div>
       <p class="body-text anim-child" id="main-message"
-        style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,2.8vw,1.35rem);opacity:0.9;max-width:560px;">
+        style="font-family:'Playfair Display',serif;font-style:bold;font-size:clamp(0.95rem,2.8vw,1.35rem);opacity:0.9;max-width:560px;">
         Write your heartfelt message here. Tell them how much they mean to you,
         how proud you are, or share your favourite memory together.
       </p>
@@ -618,7 +618,7 @@
 const PERSON_NAME = "Momina Jan";
 
 // ② The italic quote on slide 3
-const MAIN_MESSAGE = `Wese mene paragraph tho apko msgs mein hi bheja tha na cuz i wanted to keep this a surprise for you leikin phir bhi you should know that you are so much moree then the kharab thoughts in your headdd, take care of your self aswell okay? and yeah i whole heartedly wish ke hum dono g3 mein bhi aik hi class mein hounn, i have hope ke ese hi hogaaa, have fun being 15😛`;
+const MAIN_MESSAGE = `Wese mene paragraph tho apko msgs mein hi bheja hai na cuz i wanted to keep this a surprise for you aur i couldnt spoil it pehle se hi, leikin phir bhi you should know that you are so much moree then the kharab thoughts in your headdd, anyone who makes ou feel bad ya like apko down feel karwai well they dont realise your value but you still have aloooooot, take care of your self aswell okayy? have fun being 15😛`;
 
 // ③ Song of the Year slide
 const SONG_TITLE  = "I Will Survive";
@@ -627,7 +627,7 @@ const SONG_ARTIST = "Demi Lovato";
 // ④ Superpowers
 const TRAITS = [
   "Pachuchie", "Manchild", "Gud gud",
-  "Helly", "Lolz", "testing"
+  "Helly", "Lolz", "Yass(ye sirf aap use karti hain but still)"
 ];
 
 // ⑤ Music — one file per slide (put mp3s in the same folder)
@@ -637,7 +637,7 @@ const SONGS = [
   { title:"Just The Way You Are",        artist:"Milky",       src:"Just the way you are(website).mp3.mpeg"           }, // slide 2 — elapsed time
   { title:"Fukashigi No Karte",   artist:"Mai Sakurajima",      src:"Fukashi_No_Karte_For_website_ .mp3"     }, // slide 3 — message
   { title:"Espresso",                artist:"Sabrina Carpenter",         src:"Espresso_For_Website_Edited.mp3"               }, // slide 4 — superpowers
-  { title:"I Thought I Saw Your Face Today",           artist:"She and Him", src:"I thought i saw your face today(website).mp3.mpeg"           }, // slide 5 — memories
+  { title:"I Thought I Saw Your Face Today",           artist:"She and Him", src:"I_thought_i_saw_your_face_today.mp3.mpeg"           }, // slide 5 — memories
   { title:"I will survive",             artist:"Demi Lovato",   src:"I will survive.mp3.mpeg"             }, // slide 6 — song of the year
   { title:"Diet Mountain Dew",    artist:"Lana Del Rey",        src:"Diet Mountain Dew - Lana Del Ray.mp3.mpeg"}, // slide 7 — wishes
   { title:"Golden Brown",         artist:"The Stranglers",      src:"Golden_Brown_website_.mp3"             }, // slide 8 — final
@@ -648,8 +648,8 @@ const WISHES = [
   { text: "Jhumkas"          },
   { text: "The Colour Purple"   },
   { text: "Flowersss(especially pink wale)"          },
-  { text: "The head gesture when people say za mara"       },
-  { text: "A soundtrack that matches every mood"        },
+  { text: "The head gesture when people say za mara😭🙏"       },
+  { text: "People staying stronggg"        },
 ];
 
 // ⑦ PNG pop-ups on the final slide
@@ -684,7 +684,7 @@ TRAITS.forEach(t => {
 const wl = document.getElementById('wish-list');
 WISHES.forEach(w => {
   const li = document.createElement('li');
-  li.innerHTML = `<span class="icon"><img src="flower.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;" alt=""></span>${w.text}`;
+  li.innerHTML = `<span class="icon"><img src="whitecircle.png" style="width:1.1rem;height:1.1rem;object-fit:contain;vertical-align:middle;" alt=""></span>${w.text}`;
   wl.appendChild(li);
 });
 
@@ -884,11 +884,11 @@ function toggleAudio(){
 // ╚════════════════════════════════════════════════════════╝
 const MEM_TEXTS = [
   // ★ MEMORY 1 TEXT — edit here ★
-  `Write your memory about the exam sessions here. What happened, how it felt, the funny moments — all of it.`,
+  `Ab mein ye bhul gaya houn ke ye first mocks the ya second wale leikin i really really liked teaching you aur mujhe bhi jab koi cheez nahi ati thi, phir mein notes se read karke apko batata tha wo bhi bohut unique sa tha😭 and sab se intresting baat ye hai ke we never even like decided on itt all i remember is ke acha ab mein ye bhul gaya houn ke whether you asked something ya mene offer ki thi but then you said idhar bohut shor hai lets go outside, phir you sat upstairs jane wali stairs par and i sat downstairs jane wali stairs parrr, and then this kept repeatingggg.`,
   // ★ MEMORY 2 TEXT — edit here ★
-  `is din like kuch itnaaaa anokha nahi hoa tha leikin phir bhi usually hamari convo's ya incomplete khatm hojati hain ya phir bas khatm leikin is dafa it just kept going onnn which was really cooooool, aur han i also asked about the ghwanzakhe which i gave you aur apko bohut pasand aya thaaa😛 `,
+  `Is din pe koi bohut extraordinary cheez nahi hoi thi leikin still usually hamari convo's ya incomplete khatm hojati hain ya phir bas khatm leikin is dafa it just kept going on and like mene aik cheez notice ki hai ke once i manage to talk to you for some time na phir true momina ajati hai🥹 like then apki batoun mein sarcasm ka twist ajata hai which is really cooooool, aur han i also asked about the ghwanzakhe which i gave you aur apko bohut pasand aya thaaa😛 `,
   // ★ MEMORY 3 TEXT — edit here ★
-  `Is din na mene apko wo blocked acc ki chats wali screen recording bheji thien pehli baar, leikin sab se like yad rehne wali baat was your reaction😭, phir later on phir mene apko kuch philosophy wali cheezien batai thien aur wo bhi bohut tufff sa tha cuz like you actually seemed like you were enjoying itt and yeah idhar tho mene sirf 3 memories likhi hain leikin we have sooo much more even if they are really small moments🙏`,
+  `Is din na mene apko wo blocked acc ki chats wali screen recording bheji thien pehli baar, leikin sab se like yad rehne wali baat was your reaction😭 you were surprised aur like apka surprise hona dekhne se mujhe khud shock hoa🙏, phir later on phir mene apko kuch philosophy wali cheezien batai cuz like it was related to the ending of Dragon Ball GT, this was really yad rehne wala cuz you didnt watch any of it but you still listened to me explaining the endingg, and yeah idhar tho mene sirf 3 memories likhi hain leikin we have sooo much more even if they are really small moments🙏`,
 ];
 
 let activeMemTab = -1;
